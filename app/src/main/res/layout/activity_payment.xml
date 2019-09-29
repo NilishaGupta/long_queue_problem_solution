@@ -4,20 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#151719"
+    android:background="@drawable/gradient"
+
     android:orientation="vertical"
     tools:context=".payment">
+    <include layout="@layout/toolbar"/>
 <Button
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:text="COD"
+    android:textColor="#000"
+    android:background="@drawable/squre"
 
     android:layout_marginTop="150dp"
     android:id="@+id/b1"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+        android:textColor="#000"
+        android:background="@drawable/squre"
         android:layout_marginTop="50dp"
         android:text="paytm"
         android:id="@+id/b2"/>
@@ -25,13 +30,16 @@
         android:layout_width="match_parent"
 
         android:layout_marginTop="50dp"
+        android:textColor="#000"
+        android:background="@drawable/squre"
         android:layout_height="wrap_content"
         android:text="Debitcard/credit card"
         android:id="@+id/b3"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+        android:textColor="#000"
+        android:background="@drawable/squre"
         android:layout_marginTop="50dp"
         android:text="other wallet"
         android:id="@+id/b4"/>

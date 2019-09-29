@@ -5,7 +5,7 @@ public class list_Item {
     private String d;
     private  String q;
 
-    public list_Item(String h,String d,String q){
+    public list_Item(String h, String d, String q){
         this.h=h;
         this.d=d;
         this.q=q;

@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@drawable/gradient"
     android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".cod">
@@ -10,11 +11,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="250dp"
+    android:textAlignment="center"
     android:text="pls verify the bill"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="250dp"
         android:text="verify"
+        android:textColor="#000"
+        android:background="@drawable/squre"
         android:id="@+id/b1"/>
 </LinearLayout>

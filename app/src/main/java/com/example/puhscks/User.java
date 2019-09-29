@@ -7,17 +7,20 @@ import static android.content.ContentValues.TAG;
 
 public class User {
 
-    public static String surname=null;
+    public static String name;
+    public static String mobileno;
+    public static String add;
 
-    public User() {
-        // Default constructor required for calls to DataSnapshot.getValue(User.class)
+    public User(String name,String mobileno,String add) {
+        this.name=name;
+        this.mobileno=mobileno;
+        this.add=add;
 
     }
 
-    public User(String surname) {
-        this.surname=surname;
-        Log.d(TAG,"surname"+surname);
-    }
+
+
+
 
 
 }

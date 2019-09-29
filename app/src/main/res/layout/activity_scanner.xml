@@ -5,24 +5,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#151719"
+    android:background="@drawable/gradient"
     tools:context=".scanner">
-    <Button
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:id="@+id/b1"
-    android:layout_marginTop="200dp"
-android:textColor="@color/colorPrimaryDark"
-android:background="@android:color/darker_gray"
-    android:layout_marginLeft="150dp"
-    android:text="scan"/>
+    <include layout="@layout/toolbar"></include>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/b2"
+        android:id="@+id/b1"
         android:layout_marginLeft="150dp"
+        android:layout_marginTop="200dp"
+        android:textColor="#000"
+        android:background="@drawable/round"
+        android:text="scan"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/b2"
+
         android:layout_marginTop="150dp"
-        android:textColor="@color/colorPrimaryDark"
-        android:background="@android:color/darker_gray"
+        android:textColor="#000"
+        android:background="@drawable/squre"
         android:text="next"/>
 </LinearLayout>

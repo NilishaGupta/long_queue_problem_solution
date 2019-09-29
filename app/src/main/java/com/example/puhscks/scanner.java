@@ -8,11 +8,16 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -25,6 +30,11 @@ import java.util.ArrayList;
 
 public class scanner extends AppCompatActivity {
     Button b1,b2;
+FirebaseAuth firebaseAuth;
+String name;
+    TextView e1;
+
+    int k=0;
     static  int total=0;
      ArrayList<String>  mStringList= new ArrayList<String>();
     ArrayList<String>  pStringList= new ArrayList<String>();
@@ -35,8 +45,16 @@ public class scanner extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scanner);
+       Toolbar toolbar=findViewById(R.id.t1);
+        e1=findViewById(R.id.el);
+        firebaseAuth=FirebaseAuth.getInstance();
+        FirebaseUser user=firebaseAuth.getCurrentUser();
+        if(user.getDisplayName()!=null) {
+            name = user.getDisplayName();
+        }
         b1 = findViewById(R.id.b1);
         b2=findViewById(R.id.b2);
+
         final Activity activity = this;
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,18 +69,32 @@ public class scanner extends AppCompatActivity {
 
             }
         });
+
         b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Object[] mStringArray = mStringList.toArray();
-               for(int i = 0; i < mStringArray.length ; i++){
-                  total=total+Integer.parseInt(pStringList.get(i));
-                }
-                Intent i=new Intent(scanner.this,shopping_cart.class);
-                i.putExtra("value",mStringList);
-                i.putExtra("price",pStringList);
-                i.putExtra("qan",qStringList);
-                startActivity(i);
+
+                if(k==0){
+                        Toast.makeText(activity, "cart is empty", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        Intent i = new Intent(scanner.this, shopping_cart.class);
+                        i.putExtra("value", mStringList);
+                        i.putExtra("price", pStringList);
+                        i.putExtra("qan", qStringList);
+                        startActivity(i);
+
+                    }
+
+            }
+
+        });
+        e1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                firebaseAuth.signOut();
+                finish();
+                startActivity(new Intent(scanner.this,signup.class));
             }
         });
     }
@@ -77,6 +109,7 @@ public class scanner extends AppCompatActivity {
             } else {
                 Toast.makeText(this, result.getContents(), Toast.LENGTH_SHORT).show();
                 s = result.getContents();
+
                 myRef= FirebaseDatabase.getInstance().getReference().child(s);
 
                 myRef.addValueEventListener(new ValueEventListener() {
@@ -88,7 +121,7 @@ public class scanner extends AppCompatActivity {
                         mStringList.add(productname);
                         pStringList.add(price);
                         qStringList.add(quantity);
-
+                        k=2;
 
                     }
 
